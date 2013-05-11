@@ -1,4 +1,5 @@
 \documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{amssymb,amsthm,amsmath,amscd}
 \usepackage{graphicx}
@@ -6,93 +7,93 @@
 \usepackage{cite}
 \usepackage{capt-of}
 
-%пакет cite служит для простой вставки ссылок на публикации в работе, если что,
-%вызов этого пакета можно закомментировать с помощью символа %
+%РїР°РєРµС‚ cite СЃР»СѓР¶РёС‚ РґР»СЏ РїСЂРѕСЃС‚РѕР№ РІСЃС‚Р°РІРєРё СЃСЃС‹Р»РѕРє РЅР° РїСѓР±Р»РёРєР°С†РёРё РІ СЂР°Р±РѕС‚Рµ, РµСЃР»Рё С‡С‚Рѕ,
+%РІС‹Р·РѕРІ СЌС‚РѕРіРѕ РїР°РєРµС‚Р° РјРѕР¶РЅРѕ Р·Р°РєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ СЃ РїРѕРјРѕС‰СЊСЋ СЃРёРјРІРѕР»Р° %
 
-%Оформление теорем, лемм и т.д.
+%РћС„РѕСЂРјР»РµРЅРёРµ С‚РµРѕСЂРµРј, Р»РµРјРј Рё С‚.Рґ.
 \theoremstyle{plain} % default
-\newtheorem{Theorem}{Теорема}[chapter]
-\newtheorem{Lemma}{Лемма}[chapter]
-\newtheorem{Proposition}{Предложение}[chapter]
-\newtheorem{Corollary}{Следствие}[chapter]
-\newtheorem{Statement}{Утверждение}[chapter]
+\newtheorem{Theorem}{РўРµРѕСЂРµРјР°}[chapter]
+\newtheorem{Lemma}{Р›РµРјРјР°}[chapter]
+\newtheorem{Proposition}{РџСЂРµРґР»РѕР¶РµРЅРёРµ}[chapter]
+\newtheorem{Corollary}{РЎР»РµРґСЃС‚РІРёРµ}[chapter]
+\newtheorem{Statement}{РЈС‚РІРµСЂР¶РґРµРЅРёРµ}[chapter]
 
 \theoremstyle{definition}
-\newtheorem{Definition}{Определение}[chapter]
-\newtheorem{Conjecture}{Гипотеза}[chapter]
-\newtheorem{Algorithm}{Алгоритм}[chapter]
-\newtheorem{Property}{Свойство}[chapter]
+\newtheorem{Definition}{РћРїСЂРµРґРµР»РµРЅРёРµ}[chapter]
+\newtheorem{Conjecture}{Р“РёРїРѕС‚РµР·Р°}[chapter]
+\newtheorem{Algorithm}{РђР»РіРѕСЂРёС‚Рј}[chapter]
+\newtheorem{Property}{РЎРІРѕР№СЃС‚РІРѕ}[chapter]
 
 \theoremstyle{remark}
-\newtheorem{Remark}{Замечание}[chapter]
-\newtheorem{Example}{Пример}[chapter]
-\newtheorem{Note}{Примечание}[chapter]
-\newtheorem{Case}{Случай}[chapter]
+\newtheorem{Remark}{Р—Р°РјРµС‡Р°РЅРёРµ}[chapter]
+\newtheorem{Example}{РџСЂРёРјРµСЂ}[chapter]
+\newtheorem{Note}{РџСЂРёРјРµС‡Р°РЅРёРµ}[chapter]
+\newtheorem{Case}{РЎР»СѓС‡Р°Р№}[chapter]
 
-%Определение полей
-\setlength{\oddsidemargin}{0cm}% 1in=2.54см
-\setlength{\hoffset}{0.46cm}% 1in+\hoffset=3cm = левое поле;
+%РћРїСЂРµРґРµР»РµРЅРёРµ РїРѕР»РµР№
+\setlength{\oddsidemargin}{0cm}% 1in=2.54СЃРј
+\setlength{\hoffset}{0.46cm}% 1in+\hoffset=3cm = Р»РµРІРѕРµ РїРѕР»Рµ;
 
-\setlength{\textwidth}{17cm}% 21cm-3cm(левое поле)-1cm(правое поле)=17cm;
+\setlength{\textwidth}{17cm}% 21cm-3cm(Р»РµРІРѕРµ РїРѕР»Рµ)-1cm(РїСЂР°РІРѕРµ РїРѕР»Рµ)=17cm;
 
 \setlength{\headheight}{0cm}%
 \setlength{\topmargin}{0cm}%
 \setlength{\headsep}{0cm}%
-\setlength{\voffset}{-0.54cm}% 1in+\voffset=2cm = верхнее поле;
+\setlength{\voffset}{-0.54cm}% 1in+\voffset=2cm = РІРµСЂС…РЅРµРµ РїРѕР»Рµ;
 
-\setlength{\textheight}{25.7cm}% 29.7cm-2cm(верхнее поле)-2cm(нижнее поле)=25.7cm;
+\setlength{\textheight}{25.7cm}% 29.7cm-2cm(РІРµСЂС…РЅРµРµ РїРѕР»Рµ)-2cm(РЅРёР¶РЅРµРµ РїРѕР»Рµ)=25.7cm;
 
-%Оформление глав, разделов и т.д.
+%РћС„РѕСЂРјР»РµРЅРёРµ РіР»Р°РІ, СЂР°Р·РґРµР»РѕРІ Рё С‚.Рґ.
 \makeatletter%
 
-%не подавлять абзацный отступ в главах
+%РЅРµ РїРѕРґР°РІР»СЏС‚СЊ Р°Р±Р·Р°С†РЅС‹Р№ РѕС‚СЃС‚СѓРї РІ РіР»Р°РІР°С…
 \renewcommand{\chapter}{\cleardoublepage\thispagestyle{plain}%
 \global\@topnum=0 \@afterindenttrue \secdef\@chapter\@schapter}
 
-%оформление нумерованных глав
-\renewcommand{\@makechapterhead}[1]{%Начало макроопределения
-\vspace*{50pt}%Пустое место вверху страницы
+%РѕС„РѕСЂРјР»РµРЅРёРµ РЅСѓРјРµСЂРѕРІР°РЅРЅС‹С… РіР»Р°РІ
+\renewcommand{\@makechapterhead}[1]{%РќР°С‡Р°Р»Рѕ РјР°РєСЂРѕРѕРїСЂРµРґРµР»РµРЅРёСЏ
+\vspace*{50pt}%РџСѓСЃС‚РѕРµ РјРµСЃС‚Рѕ РІРІРµСЂС…Сѓ СЃС‚СЂР°РЅРёС†С‹
 {\parindent=18pt \normalfont\Large\bfseries
-\thechapter{} %номер главы
-\normalfont\Large\bfseries #1 \par %заголовок от текста
-\nopagebreak %чтоб не оторвать заголовок от текста
-\vspace{40 pt} %между заголовком и текстом
-}%конец группы
-}%коней макроопределения
+\thechapter{} %РЅРѕРјРµСЂ РіР»Р°РІС‹
+\normalfont\Large\bfseries #1 \par %Р·Р°РіРѕР»РѕРІРѕРє РѕС‚ С‚РµРєСЃС‚Р°
+\nopagebreak %С‡С‚РѕР± РЅРµ РѕС‚РѕСЂРІР°С‚СЊ Р·Р°РіРѕР»РѕРІРѕРє РѕС‚ С‚РµРєСЃС‚Р°
+\vspace{40 pt} %РјРµР¶РґСѓ Р·Р°РіРѕР»РѕРІРєРѕРј Рё С‚РµРєСЃС‚РѕРј
+}%РєРѕРЅРµС† РіСЂСѓРїРїС‹
+}%РєРѕРЅРµР№ РјР°РєСЂРѕРѕРїСЂРµРґРµР»РµРЅРёСЏ
 
-%оформление ненумерованных глав
-\renewcommand{\@makeschapterhead}[1]{%Начало макроопределения
-\vspace*{50pt}%Пустое место вверху страницы
-{\parindent=18pt \normalfont\Large\bfseries #1 \par %заголовок от текста
-\nopagebreak %чтоб не оторвать заголовок от текста
-\vspace{40pt} %между заголовком и текстом
-}%конец группы
-}%коней макроопределения
+%РѕС„РѕСЂРјР»РµРЅРёРµ РЅРµРЅСѓРјРµСЂРѕРІР°РЅРЅС‹С… РіР»Р°РІ
+\renewcommand{\@makeschapterhead}[1]{%РќР°С‡Р°Р»Рѕ РјР°РєСЂРѕРѕРїСЂРµРґРµР»РµРЅРёСЏ
+\vspace*{50pt}%РџСѓСЃС‚РѕРµ РјРµСЃС‚Рѕ РІРІРµСЂС…Сѓ СЃС‚СЂР°РЅРёС†С‹
+{\parindent=18pt \normalfont\Large\bfseries #1 \par %Р·Р°РіРѕР»РѕРІРѕРє РѕС‚ С‚РµРєСЃС‚Р°
+\nopagebreak %С‡С‚РѕР± РЅРµ РѕС‚РѕСЂРІР°С‚СЊ Р·Р°РіРѕР»РѕРІРѕРє РѕС‚ С‚РµРєСЃС‚Р°
+\vspace{40pt} %РјРµР¶РґСѓ Р·Р°РіРѕР»РѕРІРєРѕРј Рё С‚РµРєСЃС‚РѕРј
+}%РєРѕРЅРµС† РіСЂСѓРїРїС‹
+}%РєРѕРЅРµР№ РјР°РєСЂРѕРѕРїСЂРµРґРµР»РµРЅРёСЏ
 
-%оформление разделов
+%РѕС„РѕСЂРјР»РµРЅРёРµ СЂР°Р·РґРµР»РѕРІ
 \renewcommand{\section}{\@startsection{section}{1}{18pt}%
 {3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}%
 {\normalfont\Large\bfseries\raggedright}}%
 
-%оформление подразделов
+%РѕС„РѕСЂРјР»РµРЅРёРµ РїРѕРґСЂР°Р·РґРµР»РѕРІ
 \renewcommand{\subsection}{\@startsection{subsection}{2}{18pt}%
 {3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}%
 {\normalfont\large\bfseries\raggedright}}%
 
-%оформление подподразделов
+%РѕС„РѕСЂРјР»РµРЅРёРµ РїРѕРґРїРѕРґСЂР°Р·РґРµР»РѕРІ
 \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{18pt}%
 {3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}%
 {\normalfont\large\bfseries\raggedright}}%
 
-%оформление библиографии
+%РѕС„РѕСЂРјР»РµРЅРёРµ Р±РёР±Р»РёРѕРіСЂР°С„РёРё
 \renewcommand{\@biblabel}[1]{#1.}
 
-\addto\captionsrussian{\renewcommand\figurename{Рисунок}}
-\addto\captionsrussian{\renewcommand\figurename{Рисунок}}
+\addto\captionsrussian{\renewcommand\figurename{Р РёСЃСѓРЅРѕРє}}
+\addto\captionsrussian{\renewcommand\figurename{Р РёСЃСѓРЅРѕРє}}
 
-%Оформление подписи рисунка
+%РћС„РѕСЂРјР»РµРЅРёРµ РїРѕРґРїРёСЃРё СЂРёСЃСѓРЅРєР°
 \renewcommand \thefigure{\@arabic\c@figure}
-%чтобы номер рисунка содержал номер главы (например, рисунок 2.1) надо закомментировать предыдущую строку
+%С‡С‚РѕР±С‹ РЅРѕРјРµСЂ СЂРёСЃСѓРЅРєР° СЃРѕРґРµСЂР¶Р°Р» РЅРѕРјРµСЂ РіР»Р°РІС‹ (РЅР°РїСЂРёРјРµСЂ, СЂРёСЃСѓРЅРѕРє 2.1) РЅР°РґРѕ Р·Р°РєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ РїСЂРµРґС‹РґСѓС‰СѓСЋ СЃС‚СЂРѕРєСѓ
 \renewenvironment{figure}{%
 \let\@makecaption\@makefigurecaption
 \@float{figure}}%
@@ -102,7 +103,7 @@
 }
 %
 
-%Оформление подписи таблицы
+%РћС„РѕСЂРјР»РµРЅРёРµ РїРѕРґРїРёСЃРё С‚Р°Р±Р»РёС†С‹
 \newcommand{\@makefigurecaption}[2]{%
 \vspace{\abovecaptionskip}%
 \sbox{\@tempboxa}{\large #1 --- \large #2}%
@@ -113,7 +114,7 @@
 
 
 \renewcommand{\thetable}{\@arabic\c@table}
-%чтобы номер таблицы содержал номер главы (например, таблица 2.1) надо закомментировать предыдущую строку
+%С‡С‚РѕР±С‹ РЅРѕРјРµСЂ С‚Р°Р±Р»РёС†С‹ СЃРѕРґРµСЂР¶Р°Р» РЅРѕРјРµСЂ РіР»Р°РІС‹ (РЅР°РїСЂРёРјРµСЂ, С‚Р°Р±Р»РёС†Р° 2.1) РЅР°РґРѕ Р·Р°РєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ РїСЂРµРґС‹РґСѓС‰СѓСЋ СЃС‚СЂРѕРєСѓ
 \renewenvironment{table}{%
 \let\@makecaption\@maketablecaption
 \@float{table}}%
@@ -146,5 +147,5 @@
 \newcommand\B{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut
 
 %opening
-\title{Рекурентное построение монотонных булевых функций}
-\author{Санакоев Артём Олегович}
+\title{Р РµРєСѓСЂРµРЅС‚РЅРѕРµ РїРѕСЃС‚СЂРѕРµРЅРёРµ РјРѕРЅРѕС‚РѕРЅРЅС‹С… Р±СѓР»РµРІС‹С… С„СѓРЅРєС†РёР№}
+\author{РЎР°РЅР°РєРѕРµРІ РђСЂС‚С‘Рј РћР»РµРіРѕРІРёС‡}
