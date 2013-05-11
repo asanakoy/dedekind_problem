@@ -1,0 +1,5 @@
+\select@language {russian}
+\contentsline {chapter}{\numberline {1}Введение}{3}
+\contentsline {chapter}{\numberline {2}Основные понятия и предварительные результаты}{4}
+\contentsline {chapter}{\numberline {3}Схема алгоритма для подсчета МБФ}{7}
+\contentsline {chapter}{Литература}{8}
