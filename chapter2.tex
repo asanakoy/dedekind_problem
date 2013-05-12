@@ -73,6 +73,12 @@ $\square$
   \begin{Corollary}
     (\cite{Moschenski-2001}) Любая неконстантная МБФ может быть задана ДНФ без отрицаний.
   \end{Corollary}
+   \begin{Corollary}
+    $\psi(n) \leq 2^{2^n-1}-1$.
+  \end{Corollary}
+   $\square$
+    Следует из того, что число всех ДНФ без отрицаний $2^{2^n-1}-1$.
+    $\blacksquare$
   \begin{Corollary}
     (\cite{MDNF})
     Любая неконстантная МБФ представима в виде единственной
@@ -86,6 +92,10 @@ $\square$
     Например, $0 \vee \overline{x} = \overline{x}$ -- не МБФ, хотя $0$ - МБФ.
     И $1 \wedge \overline{x} = \overline{x}$ -- не МБФ, хотя $1$ - МБФ.
    \end{Remark}
+   \begin{Theorem}(\cite{Dedekind_Number_Asymptotics, Kleitman_Markowsky})
+    Верхняя и нижняя оценки логарифма $\psi(n)$ имеют следующий вид:
+    $${n\choose \lfloor n/2\rfloor}\le \log_2 \psi(n)\le {n\choose \lfloor n/2\rfloor}\left(1+O\left(\frac{\log n}{n}\right)\right).$$
+   \end{Theorem}
 
 Определим \emph{матрицу предшествий} векторов из $B^n$ следующим образом: 
 $M_n = m_{i,j}$ имеет размерность $2^n \times 2^n$, и для каждой пары векторов
@@ -173,16 +183,17 @@ $m_{i,j} = 1$, если $\al \preceq \be$, и $m_{i,j} = 0$ в противно�
 	\end{list}
       \item Конец.
       \end{enumerate}
+Шаги 3.a и 3.b, написанные на C++, выглядят так:
+\lstset{language=C++,basicstyle=\footnotesize}
+\begin{lstlisting}
+void Gen_I ( bool G[], int i ) {
+  bool H [Max_Dim];
+  for ( int k=i; k<N; k++ )	// N= 2^n is a global variable
+    H[k]= G[k] || M[i][k];	// M is M_n
+  Print ( H );
+  for ( int j= N-1; j>i; j-- )	// step 3.b
+    if ( !H[j] ) Gen_I ( H, j );
+}
+\end{lstlisting}
 
-$void Gen_I ( bool G[], int i ) {\\
-bool H [Max_Dim];\\
-for ( int k=i; k<N; k++ )\\
- // N= 2^n is a global variable\\
-H[k]= G[k] || M[i][k];\\
- // M is M_n\\
-Print ( H );\\
-for ( int j= N-1; j>i; j-- )\\
- // step 3.b\\
-if ( !H[j] ) Gen_I ( H, j );\\
-}\\$
 
