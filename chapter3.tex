@@ -68,15 +68,36 @@ $s_0 + \dots + s_{15} + 1 = S + 1 = 168 = \psi(4)$. \par
 Для $\al$ и $\be$ имеем 3 случая: (1) $\al \preceq \be;$ (2) $\be \prec \al$, 
 и (3) $\al$ и $\be$ несравнимы.
 Используя свойства матрицы $M_n$ и доводы, приведенные выше, мы можем доказать:
-\begin{Proposition}
+\begin{Proposition}\label{Prop_alpha_preceq_beta}
  Случай (1): если $\al \preceq \be$, то 
  $Res_n(i,j) = 1 + \sum\limits^{2^n-1}_{k=j+1} Res_n(j,k) = s_j + 1$. 
 \end{Proposition}
 
-\begin{Proposition}
+\begin{Proposition}\label{Prop_beta_prec_alpha}
  Случай (2): если $\be \prec \al$, то 
  $Res_n(i,j) = 1 + \sum\limits^{2^n-1}_{k=j+1} Res_n(i,k)$. 
 \end{Proposition}
 
+  Пусть мы уже вычислили $Res_n(i,k)$ и $Res_n(j,k)$ для $k=j+1, \dots, 2^n-1$ и хотим вычислить $Res_n(i,j)$.
+Если $\al \preceq \be$ или $\be \prec \al$, то применяем Предложение \ref{Prop_alpha_preceq_beta} или \ref{Prop_beta_prec_alpha} 
+соответственно.
+Для третьего случая мы используем GEN\_Cell, т.к. мы пока не нашли лучшего алгоритма (или формулы).\par
+Следующее предложение следует прямо из определения матрицы $M_n$.
+
+\begin{Proposition}\label{Prop_elements_in_Mn}
+Для фиксированного $n$ матрица $M_n$ содержит $4^n$ элементов и:
+\newcounter{Prop_elements_in_Mn}
+	\begin{list}{\arabic{Prop_elements_in_Mn})}{\usecounter{Prop_elements_in_Mn}} 
+	\item $3^n$ из них равны $1$ и они находятся на главной диагонали либо выше неё;
+	\item все $(4^n-2^n)/2$ элементов под главной диагональю равны нулю, а также 
+	$(4^n - 2\cdot3^n + 2^n)/2$ нулей расположено над главной диагональю.
+	\end{list}
+\end{Proposition}
+Итак, нашему алгоритму нужно вычислить и заполнить $(4^n - 2\cdot3^n + 2^n)/2$ элементов матрицы $Res_n$.
+Некоторые из значений получаются в соостветствии с рассмотренными тремя случаями. 
+Остальные являются копиями, 
+посчитанных значений элементов матрицы $Res_{n-1}$.
+Экспериментальные результаты для числа элементов в каждом 
+случае для $n=6,7,8$ приведены в Таблице \ref{Table_cases_count_for_Mn}
 
 

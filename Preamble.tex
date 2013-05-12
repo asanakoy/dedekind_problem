@@ -6,6 +6,7 @@
 \usepackage{float}
 \usepackage{cite}
 \usepackage{capt-of}
+\usepackage{hyperref}
 
 %пакет cite служит для простой вставки ссылок на публикации в работе, если что,
 %вызов этого пакета можно закомментировать с помощью символа %
@@ -113,7 +114,7 @@
 \fi \vspace{\belowcaptionskip}}
 
 
-\renewcommand{\thetable}{\@arabic\c@table}
+%\renewcommand{\thetable}{\@arabic\c@table}
 %чтобы номер таблицы содержал номер главы (например, таблица 2.1) надо закомментировать предыдущую строку
 \renewenvironment{table}{%
 \let\@makecaption\@maketablecaption
