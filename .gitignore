@@ -1,4 +1,9 @@
 *.log
+*.nav
 *.aux
 *.pdf
+*.out
+*.snm
+*.toc
+*.eps
 *.backup

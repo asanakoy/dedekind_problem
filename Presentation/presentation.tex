@@ -1,0 +1,294 @@
+\documentclass[14pt]{beamer}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,mathtext}
+\usepackage{cite,enumerate,float,indentfirst}
+\usepackage{amssymb,amsthm,amsmath,amscd}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{listings}
+
+
+\theoremstyle{plain} % default
+\newtheorem{Theore}{Теорема}
+\newtheorem{Corollar}{Следствие}
+\newtheorem{Statemen}{Утверждение}
+
+\theoremstyle{remark}
+\newtheorem{Remark}{Замечание}
+
+
+
+%my macros
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand\T{\rule{0pt}{2.6ex}}       % Top strut
+\newcommand\B{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut
+
+\graphicspath{{images/}}
+
+\usetheme{Pittsburgh}
+\usecolortheme{whale}
+
+\setbeamercolor{footline}{fg=blue}
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{}%
+    А. О. Санакоев
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{}%
+    Минск, 2013
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{}%
+  Стр. \insertframenumber{} из \inserttotalframenumber \hspace*{2ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\newcommand{\itemi}{\item[\checkmark]}
+
+\title{\small{РЕКУРЕНТНОЕ ПОСТРОЕНИЕ МОНОТОННЫХ БУЛЕВЫХ ФУНКЦИЙ}}
+\author{\small{%
+\emph{Выступающий:}~А.О.Санакоев\\%
+\emph{Руководитель:}~доцент,~к.ф.-м.н.~В.А.Мощенский}\\%
+\vspace{30pt}%
+БГУ
+\vspace{20pt}%
+}
+\date{\small{Минск, 2013}}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{frame}
+\frametitle{Введение}
+В 1897 году Дедекинд сформулировал задачу нахождения числа $\psi(n)$ всех монотонных булевых функций (МБФ) 
+ от $n$ переменных.
+ С тех пор ученые исследую это проблему в двух
+ направленияx:\\
+ -- вычисление этого числа для фиксированного $n$
+ выведением соответствующих формул для него или специальными
+ алгоритмами для подсчета.\\ 
+ -- это оценка и приближенные подсчеты этого числа.
+\end{frame}
+
+\begin{frame}
+\frametitle{$\psi(n)$ для $0 \leq n \leq 8$}
+\begin{center}
+ \begin{tabular}{ r | r | r } 
+  $n$ & $\psi(n)$ & Кем вычислено \\
+  \hline
+  0 & 	2				& \T Р. Дедекинд, 1897 \\
+  1 & 	3 				& Р. Дедекинд, 1897 \\
+  2 & 	6 				& Р. Дедекинд, 1897 \\
+  3 & 	20 				& Р. Дедекинд, 1897 \\
+  4 & 	168 				& Р. Дедекинд, 1897 \\
+  5 & 	7 581 				& Р. Черч, 1940 \\
+  6 &	7 828 354			& М. Уорд, 1946 \\
+  7 &	2 414 682 040 998 		& Р. Черч, 1965 \\
+  8 &	56 130 437 228 687 557 907 788 	& \B Д. Видеман, 1991 \\
+  \hline
+  \end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Основные понятия и предварительные результаты}
+Отношение $\preceq$ определено на $B^n \times B^n$ следующим образом:
+$\alpha \preceq \beta$  если 
+$a_i \leq b_i, \forall i = \overline{1,n}$. 
+Когда $\alpha \preceq \beta$ или $\beta \preceq \alpha$, будем называть
+$\al$ и $\be$ \emph{сравнимыми}, в противном случае они \emph{несравнимы}.\par
+  Булевая функция $f$ от $n$ аргументов -- это отображение 
+$f : B^n \rightarrow B$. Функция $f$ называется \emph{монотонной} 
+если $\forall \al, \be \in B^n$ верна импликация 
+$\al \preceq \be \Rightarrow f(\al) \leq f(\be)$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Основные понятия и предварительные результаты}
+\begin{Theore} 
+Дизъюнкция и конъюнкция монотонных булевых функция (МБФ) есть МБФ.
+\end{Theore}
+\begin{Corollar}
+    Любая ДНФ без отрицаний задает МБФ.
+  \end{Corollar}
+    
+  \begin{Corollar}
+    Любая неконстантная МБФ может быть задана ДНФ без отрицаний.
+  \end{Corollar}
+   
+\end{frame}
+
+\begin{frame}
+\frametitle{Основные понятия и предварительные результаты}
+\begin{Corollar}
+    $\psi(n) \leq 2^{2^n-1}-1$.
+  \end{Corollar}
+ 
+  \begin{Corollar}
+    
+    Любая неконстантная МБФ представима в виде единственной
+    минимальной ДНФ (МДНФ) , состоящей из простых импликант без отрицаний, 
+    ни к каким двум из которых не пременимо правило поглощения 
+    ($x \vee xy = x$).
+  \end{Corollar}
+  
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Основные понятия и предварительные результаты}
+\begin{Remark}
+    Если одна из БФ $g$ или $h$ не является монотонной, то утверждать о монотонности 
+    $g \wedge h$ или $g \vee h$ не следует.
+    Например, $0 \vee \overline{x} = \overline{x}$ -- не МБФ, хотя $0$ - МБФ.
+    И $1 \wedge \overline{x} = \overline{x}$ -- не МБФ, хотя $1$ - МБФ.
+   \end{Remark}
+   
+\end{frame}
+
+\begin{frame}
+\frametitle{Оценки логарифма $\psi(n)$}
+   \begin{Theore}
+    Верхняя и нижняя оценки логарифма $\psi(n)$ имеют следующий вид:
+    $${n\choose \lfloor n/2\rfloor}\le \log_2 \psi(n)\le {n\choose \lfloor n/2\rfloor}\left(1+O\left(\frac{\log n}{n}\right)\right).$$
+   \end{Theore}
+\end{frame}
+
+\begin{frame}
+\frametitle{Порождающая матрица}
+Если $\alpha = (a_1, \dots, a_n)$, $\beta = (b_1, \dots, b_n)$ -- 
+бинарный ветор из $B^n$.То \emph{порядковый номер} вектора
+$\alpha$ -- это целое число 
+$\#(\alpha) = a_1 2^{n-1} + a_2 2^{n-2} + \dots + a_n 2^0$.\par
+Определим \emph{матрицу предшествий} векторов из $B^n$ следующим образом: 
+$M_n = m_{i,j}$ имеет размерность $2^n \times 2^n$, и для каждой пары векторов
+$\al, \be \in B^n$ таких, что $\#(a) = i$ и $\#(b) = j$, мы полагаем
+$m_{i,j} = 1$, если $\al \preceq \be$, и $m_{i,j} = 0$ в противном случае $(0 \leq i, j \leq 2^n)$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Порождающая матрица}
+
+\begin{Theore}
+ Матрица $M_n$ есть блочная матрица, определенная рекурсивно, или с помощью 
+ произведения Кронекера:\\
+ 
+ $M_1 = \begin{pmatrix}
+        1 & 1\\
+        0 & 1
+       \end{pmatrix}, \quad$ 
+ $M_n = \begin{pmatrix}
+        M_{n-1} & M_{n-1}\\
+        O_{n-1} & M_{n-1}
+       \end{pmatrix},\quad$, \\
+  где $M_{n-1}$ есть аналогичная матрица размерности $2^{n-1} \times 2^{n-1}$,
+  $O_{n-1}$ -- нулевая матрица размерности $2^{n-1} \times 2^{n-1}$
+\end{Theore}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Порождающая матрица}
+\begin{Theore}\label{Th_fun_values_implicants}
+ Пусть $\al = (a_1, a_2, \dots, a_n) \in B^n,\ \#(\al) = i,\ 
+ 1 \leq i \leq 2^n -1 $,
+ и $\al$ имеет единицы в позициях $(i_1, i_2, \dots,i_k),\ 1 \leq k \leq n$.
+ Тогда $i$-я строка $r_i$ матрицы $M_n$ есть вектор функциональных значений
+ простой импликанты $c_i = x_{i_1}x_{i_2\dots x_{i_k}}$, т.е. $\al$ -- это 
+ характеристический вектор литералов в $c_i$, являющейся МБФ.
+ Если $\#(\al)=0$, то нулевая по счету строка в $M_n$ соответствует константе $1$. 
+\end{Theore}
+\end{frame}
+
+\begin{frame}
+\frametitle{Порождающая матрица}
+\begin{center}
+ \begin{tabular}{ c | c | c | l }
+  $\al = (x_1, x_2, x_3)$ & $i = \#(\al)$ & $M_3$ & $c_i$ \\
+  \hline
+  (0 0 0) & 	0	& 1 1 1 1\ \ 1 1 1 1 & 1 \T  \\
+  (0 0 1) & 	1	& 0 1 0 1\ \ 0 1 0 1 & $x_3$     \\
+  (0 1 0) & 	2	& 0 0 1 1\ \ 0 0 1 1 & $x_2$     \\
+  (0 1 1) & 	3	& 0 0 0 1\ \ 0 0 0 1 & $x_2x_3$   \\
+  (1 0 0) & 	4	& 0 0 0 0\ \ 1 1 1 1 & $x_1$     \\
+  (1 0 1) & 	5	& 0 0 0 0\ \ 0 1 0 1 & $x_1x_3$   \\
+  (1 1 0) & 	6	& 0 0 0 0\ \ 0 0 1 1 & $x_1x_2$   \\
+  (1 1 1) & 	7	& 0 0 0 0\ \ 0 0 0 1 & $x_1x_2x_3$ \B \\
+  \hline
+  \end{tabular}
+\captionof{table}{
+ Иллюстрация утверждения предыдущей Tеоремы для $n = 3$
+  }
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Порождающая матрица}
+Итак, вектор функциональных значений любой МБФ $f$ может быть представлен
+  в виде
+  $f(x_1, x_2, \dots, x_n) = a_0 r_0 \vee a_1 r_1 \dots a_{2^n-1} r_{2^n-1}$, 
+  где $r_i$ -- $i$-я строка матрицы $M_n$, коэффициенты $a_i \in \{0,1\}$, для
+  $i = \overline{0, 2^n - 1}$. Другими словами, 
+  $M_n$ играет роль порождающей матрицы для множества всех МБФ от $n$ переменных.
+  Если $f(x_1, x_2, \dots, x_n) = r_{i_1} \vee r_{i_2} \vee \dots \vee r_{i_k}$
+  соответствует МДНФ функции $f$, тогда любые 2 строки $r_{i_j}$ и $r_{i_l}$ 
+  (соответствующие простым импликантам $c_{i_j}$ и $c_{i_l}$), $1 \leq j < l \leq k$,
+  взаимно несравнимы.
+\end{frame}
+
+\begin{frame}
+\frametitle{Алгоритм}
+\textbf{Вход:} число переменных $n$.\\
+    \textbf{Выход:} вектора всех МБФ от $n$ переменных в лексикографическом порядке.\\
+    \textbf{Псевдокод:}\par
+      \begin{enumerate}
+      \item Генерируем матрицу $M_n$. 
+      \item $f = (0, 0, \dots, 0)$. Выводим  $f$.
+      \item Для каждой строки $r_i$ в $M_n$, $i = 2^n - 1, \dots, 0$, 
+	устанавливаем $f = r_i$ и:\par
+      \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Алгоритм}
+	\newcounter{N}
+	\begin{list}{\alph{N})}{\usecounter{N}} 
+	\item выводим $f$;
+	\item для каждой позиции $j,\ j = 2^n -2, 2^n - 3, \dots, i+1$, 
+	  проверяем $f[j] = 0 ?$, 
+	  т.е. являются ли $i$-ая $j$-ая строки несравнимыми. Если ``Да'', тогда
+	  рекурсивно полагаем $f = f \vee r_j$ и переходим к шагу 3.a)
+	\end{list}
+      Конец.
+\end{frame}
+
+
+Шаги 3.a и 3.b, написанные на C++, выглядят так:
+\lstset{language=C++,basicstyle=\footnotesize}
+\begin{lstlisting}
+void Gen_I ( bool G[], int i ) {
+  bool H [Max_Dim];
+  for ( int k=i; k<N; k++ )	// N= 2^n is a global variable
+    H[k]= G[k] || M[i][k];	// M is M_n
+  Print ( H );
+  for ( int j= N-1; j>i; j-- )	// step 3.b
+    if ( !H[j] ) Gen_I ( H, j );
+}
+\end{lstlisting}
+
+
+\begin{frame}
+\begin{center}
+Спасибо за внимание!
+\end{center}
+\end{frame}
+
+\end{document} 
